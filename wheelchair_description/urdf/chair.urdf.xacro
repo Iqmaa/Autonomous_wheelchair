@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<robot name="wheelchair" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- importing the other xacro files -->
+    <xacro:include filename="$(find wheelchair_description)/urdf/chair.xacro" />
+    <xacro:include filename="$(find wheelchair_description)/urdf/chair_sensors.xacro" />
+    <xacro:include filename="$(find wheelchair_description)/urdf/gazebo.xacro"/>
+    <xacro:include filename="$(find wheelchair_description)/urdf/ros2_control.xacro"/>
+</robot>
+<!-- this is the main xacro file that'll the published to the robot's state publisher
+to help ros know the robot's params(joint, links and so on) -->

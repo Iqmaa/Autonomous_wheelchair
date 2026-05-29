@@ -4,9 +4,9 @@ Assembling a wheelchair and making it autonomous using a LIDAR sensor for obstac
 
 Current progress:
 
-|  week 1   |  week 2   |
+|  RViZ  |  Gazebo   |
 | :---: | :---: |
-| ![chair1](https://github.com/Iqmaa/aurora_autonomous_wheelchair/blob/main/Media/week1_1.png?raw=true)  | ![chair2](https://github.com/Iqmaa/Autonomous_wheelchair/blob/main/Media/week2_complete.png?raw=true) |
+| ![chair1](https://github.com/Iqmaa/Autonomous_wheelchair/blob/main/Media/week2_complete.png?raw=true)  | ![chair2](https://github.com/Iqmaa/Autonomous_wheelchair/blob/main/Media/week2_gazebo_controls.png?raw=true) |
 
 
 ### Steps to Launch
@@ -27,9 +27,11 @@ source install/setup.bash
 ```
 ros2 launch urdf_tutorial display.launch.py model:=$(pwd)/src/wheelchair_description/urdf/chair.xacro
 ```
-### Movements
+### Movements and Teleoperation
 
 [basic_wheelchair_movement.webm](https://github.com/user-attachments/assets/fab8aedc-2264-45f9-b151-604158d3451f)
+
+[gazebo_teleop.webm](https://github.com/user-attachments/assets/a195f447-2c9d-4e5e-bafd-ae7d889a2d30)
 
 
 Link to progress report : https://docs.google.com/document/d/1sxpyhflVC5Y_dnnonwOcHkn5cXx0ACv0yo_RJys0I18/edit?usp=sharing

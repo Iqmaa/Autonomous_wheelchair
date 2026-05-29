@@ -181,12 +181,12 @@
     </link>
 
     <!-- frame_to_leftbackwheel -->
-    <joint name="leftbackwheel" type="fixed">
+    <joint name="leftbackwheel" type="continuous">
         <origin xyz="-0.276 -0.317 -0.194" rpy="0.0 0.0 0.0"/>
         <parent link="frame_link"/>
         <child link="leftbackwheel"/>
         <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
-        <axis xyz="0 1 0"/>
+        <axis xyz="1 0 0"/>
         <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
     </joint>
 
@@ -211,12 +211,12 @@
     </link>
 
     <!-- frame_to_rightbackwheel -->
-    <joint name="rightbackwheel" type="fixed">
+    <joint name="rightbackwheel" type="continuous">
         <origin xyz="0.276 -0.317 -0.194" rpy="0.0 0.0 0.0"/>
         <parent link="frame_link"/>
         <child link="rightbackwheel"/>
         <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
-        <axis xyz="0 1 0"/>
+        <axis xyz="1 0 0"/>
         <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
     </joint>
 
@@ -241,7 +241,7 @@
     </link>
 
     <!-- frame_to_left_caster -->
-    <joint name="left_caster" type="fixed">
+    <joint name="left_caster" type="continuous">
         <origin xyz="-0.216 0.161 -0.314" rpy="0.0 0.0 0.0"/>
         <parent link="frame_link"/>
         <child link="left_caster"/>
@@ -273,12 +273,12 @@
     </link>
 
     <!-- frame_to_rightcaster -->
-    <joint name="right_caster" type="fixed">
+    <joint name="right_caster" type="continuous">
         <origin xyz="0.216 0.161 -0.314" rpy="0.0 0.0 0.0"/>
         <parent link="frame_link"/>
         <child link="right_caster"/>
         <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
-        <axis xyz="1 0 0"/>
+        <axis xyz="0 0 1"/>
         <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
     </joint>
 
@@ -303,12 +303,12 @@
     </link>
 
     <!-- left_caster_to_leftfrontwheel -->
-    <joint name="leftfrontwheel" type="fixed">
+    <joint name="leftfrontwheel" type="continuous">
         <origin xyz="0.0 0.027 -0.086" rpy="0.0 0.0 0.0"/>
         <parent link="left_caster"/>
         <child link="leftfrontwheel"/>
         <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
-        <axis xyz="0 1 0"/>
+        <axis xyz="1 0 0"/>
         <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
     </joint>
 
@@ -333,12 +333,12 @@
     </link>
 
     <!-- right_caster_to_rightfrontwheel -->
-    <joint name="rightfrontwheel" type="fixed">
+    <joint name="rightfrontwheel" type="continuous">
         <origin xyz="0.0 0.027 -0.086" rpy="0.0 0.0 0.0"/>
         <parent link="right_caster"/>
         <child link="rightfrontwheel"/>
         <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
-        <axis xyz="0 1 0"/>
+        <axis xyz="1 0 0"/>
         <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
     </joint>
 
@@ -358,6 +358,246 @@
             <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
             <geometry>
                 <mesh filename="package://wheelchair_description/meshes/collision/rightfrontwheel_collision.stl"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- frame to left_armrest -->
+    <joint name="left_armrest" type="fixed">
+        <origin xyz="-0.237 -0.162 0.200" rpy="0.0 0.0 0.0"/>
+        <parent link="frame_link"/>
+        <child link="left_armrest"/>
+        <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
+        <axis xyz="0 0 0"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <link name="left_armrest">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/visual/left_armrest_visual.obj"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/collision/left_armrest_collision.stl"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- frame to right_armrest -->
+    <joint name="right_armrest" type="fixed">
+        <origin xyz="0.237 -0.162 0.200" rpy="0.0 0.0 0.0"/>
+        <parent link="frame_link"/>
+        <child link="right_armrest"/>
+        <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
+        <axis xyz="0 0 0"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <link name="right_armrest">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/visual/right_armrest_visual.obj"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/collision/right_armrest_collision.stl"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- frame to left_flap -->
+    <joint name="left_flap" type="fixed">
+        <origin xyz="-0.133 0.400 -0.360" rpy="0.0 0.0 0.0"/>
+        <parent link="frame_link"/>
+        <child link="left_flap"/>
+        <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
+        <axis xyz="0 0 0"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <link name="left_flap">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/visual/left_flap_visual.obj"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/collision/left_flap_collision.stl"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- frame to right_flap -->
+    <joint name="right_flap" type="fixed">
+        <origin xyz="0.133 0.400 -0.360" rpy="0.0 0.0 0.0"/>
+        <parent link="frame_link"/>
+        <child link="right_flap"/>
+        <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
+        <axis xyz="1 0 0"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <link name="right_flap">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/visual/right_flap_visual.obj"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/collision/right_flap_collision.stl"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- frame to left_handle -->
+    <joint name="left_handle" type="fixed">
+        <origin xyz="-0.217 -0.427 0.392" rpy="0.0 0.0 0.0"/>
+        <parent link="frame_link"/>
+        <child link="left_handle"/>
+        <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
+        <axis xyz="0 0 0"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <link name="left_handle">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/visual/left_handle_visual.stl"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/collision/left_handle_collision.stl"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- frame to right_handle -->
+    <joint name="right_handle" type="fixed">
+        <origin xyz="0.217 -0.427 0.392" rpy="0.0 0.0 0.0"/>
+        <parent link="frame_link"/>
+        <child link="right_handle"/>
+        <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
+        <axis xyz="0 0 0"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <link name="right_handle">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/visual/right_handle_visual.stl"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/collision/right_handle_collision.stl"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- frame to left_pin -->
+    <joint name="left_pin" type="fixed">
+        <origin xyz="-0.003 0.027 -0.081" rpy="0.0 0.0 0.0"/>
+        <parent link="left_caster"/>
+        <child link="left_pin"/>
+        <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
+        <axis xyz="0 0 0"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <link name="left_pin">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/visual/left_pin_visual.obj"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/collision/left_pin_collision.stl"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- frame to right_pin -->
+    <joint name="right_pin" type="fixed">
+        <origin xyz="0.003 0.027 -0.081" rpy="0.0 0.0 0.0"/>
+        <parent link="right_caster"/>
+        <child link="right_pin"/>
+        <!-- prismatic adds: Prevents math crashes by setting motion bounds (in meters) -->
+        <axis xyz="0 0 0"/>
+        <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <link name="right_pin">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.0"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/visual/right_pin_visual.obj"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://wheelchair_description/meshes/collision/right_pin_collision.stl"/>
             </geometry>
         </collision>
     </link>

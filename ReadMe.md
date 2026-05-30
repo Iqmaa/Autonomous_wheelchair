@@ -23,11 +23,22 @@ colcon build --symlink-install
 ```
 source install/setup.bash
 ```
-4. launch the project 
+4. launch the project
+#### RViZ
 ```
 ros2 launch urdf_tutorial display.launch.py model:=$(pwd)/src/wheelchair_description/urdf/chair.xacro
 ```
-### Movements and Teleoperation
+#### Gazebo Tele-op
+
+terminal 1 (to launch the chair in gaebo)
+```
+ros2 launch wheelchair_bringup simulated_wheelchair.launch.py
+```
+terminal 2 (for keyboard control)
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard   --ros-args -p stamped:=false -r cmd_vel:=wheel_controller/cmd_vel_unstamped
+```
+### Movements and Teleoperation demos
 
 [basic_wheelchair_movement.webm](https://github.com/user-attachments/assets/fab8aedc-2264-45f9-b151-604158d3451f)
 

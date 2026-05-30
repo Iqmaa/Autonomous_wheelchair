@@ -6,7 +6,7 @@ Current progress:
 
 |  RViZ  |  Gazebo   |
 | :---: | :---: |
-| ![chair1](https://github.com/Iqmaa/Autonomous_wheelchair/blob/main/Media/week2_complete.png?raw=true)  | ![chair2](https://github.com/Iqmaa/Autonomous_wheelchair/blob/main/Media/week2_gazebo_controls.png?raw=true) |
+| ![chair1](https://github.com/Iqmaa/Autonomous_wheelchair/blob/main/Media/week2_lidar.png?raw=true)  | ![chair2](https://github.com/Iqmaa/Autonomous_wheelchair/blob/main/Media/week2_lidar-rays.png?raw=true) |
 
 
 ### Steps to Launch
@@ -38,7 +38,20 @@ terminal 2 (for keyboard control)
 ```
 ros2 run teleop_twist_keyboard teleop_twist_keyboard   --ros-args -p stamped:=false -r cmd_vel:=wheel_controller/cmd_vel_unstamped
 ```
-### Movements and Teleoperation demos
+
+#### Obstacle detection
+terminal 1
+```
+ros2 launch wheelchair_bringup simulated_wheelchair.launch.py
+```
+terminal 2
+```
+ros2 run wheelchair_script obstacle_avoidance
+```
+
+### Movement, Teleoperation, and Obstacle avoidance demos
+
+[week2_obstacle_detecting.webm](https://github.com/user-attachments/assets/06835ca2-4f37-4d6b-bc5e-a91f949c9ed5)
 
 [basic_wheelchair_movement.webm](https://github.com/user-attachments/assets/fab8aedc-2264-45f9-b151-604158d3451f)
 

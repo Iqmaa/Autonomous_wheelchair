@@ -37,7 +37,7 @@ class ObstacleAvoidanceChair(Node):
 
             # 2. SEPARATE DIRECTIONAL EVALUATION BALANCING
             # Width window: 80cm (abs(y) < 0.40) | Height window: 1.2m (abs(z) < 0.60)
-            if abs(y) < 0.75 and abs(z) < 0.70:
+            if abs(y) < 0.95 and abs(z) < 0.70:
                 
                 # Check Front Zone (0.28m out to 2.5m ahead)
                 if 0.3 <= x < 1.4:

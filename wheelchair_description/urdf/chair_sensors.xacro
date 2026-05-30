@@ -18,7 +18,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <cylinder radius="0.02" length="0.5"/>
+        <cylinder radius="0.016" length="0.5"/>
       </geometry>
       <material name="grey">
         <color rgba="0.5 0.5 0.5 1.0"/>
@@ -34,12 +34,12 @@
 
 <!-- pole to lidar -->
   <joint name="lidar_joint" type="fixed">
-    <origin xyz="0.0 0.0 0.549" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.522" rpy="0.0 0.0 0.0"/>
     <parent link="pole_link"/>
     <child link="lidar_link"/>
     <!-- prismatic add-ins -->
-    <!-- <axis xyz="0 1 0" rpy="0 0 0"/> -->
-    <!-- <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/> -->
+    <!-- <axis xyz="0 0 1" rpy="0 0 0"/>
+    <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/> -->
   </joint>
 
   <link name="lidar_link">
@@ -51,7 +51,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <cylinder length="0.1" radius="0.06"/>
+        <cylinder length="0.05" radius="0.05"/>
       </geometry>
       <material name="red">
         <color rgba="1.0 0.0 0.0 1.0"/>

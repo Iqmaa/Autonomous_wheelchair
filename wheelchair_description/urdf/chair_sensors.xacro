@@ -1,7 +1,16 @@
 <?xml version="1.0" ?>
 <robot name="wheelchair" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <link name="lidar_pole_link">
+  <joint name="pole_joint" type="fixed">
+    <origin xyz="0.0 -0.362 0.205" rpy="0.0 0.0 0.0"/>
+    <parent link="frame_link"/>
+    <child link="pole_link"/>
+    <!-- prismatic add-ins -->
+    <!-- <axis xyz="0 0 0"/>
+    <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/> -->
+  </joint>
+
+  <link name="pole_link">
     <inertial>
       <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
       <mass value="0.5"/> <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.001"/>
@@ -23,17 +32,17 @@
     </collision>
   </link>
 
-  <joint name="lidar_pole_joint" type="fixed">
-    <origin xyz="0.0 -0.362 0.205" rpy="0.0 0.0 0.0"/>
-    <parent link="frame_link"/>
-    <child link="lidar_pole_link"/>
+<!-- pole to lidar -->
+  <joint name="lidar_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.549" rpy="0.0 0.0 0.0"/>
+    <parent link="pole_link"/>
+    <child link="lidar_link"/>
     <!-- prismatic add-ins -->
-    <!-- <axis xyz="0 0 0"/>
-    <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/> -->
+    <!-- <axis xyz="0 1 0" rpy="0 0 0"/> -->
+    <!-- <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/> -->
   </joint>
 
-
-  <link name="laser_link">
+  <link name="lidar_link">
     <inertial>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <mass value="0.3"/>
@@ -42,7 +51,7 @@
     <visual>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.2 0.05 0.1"/>
+        <cylinder length="0.1" radius="0.06"/>
       </geometry>
       <material name="red">
         <color rgba="1.0 0.0 0.0 1.0"/>
@@ -51,25 +60,16 @@
     <collision>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <box size="0.05 0.2 0.1"/>
+        <cylinder length="0.1" radius="0.1"/>
       </geometry>
     </collision>
   </link>
 
-  <joint name="laser_joint" type="fixed">
-    <origin xyz="0.0 0.0 0.549" rpy="0.0 0.0 0.0"/>
-    <parent link="lidar_pole_link"/>
-    <child link="laser_link"/>
-    <!-- prismatic add-ins -->
-    <!-- <axis xyz="0  0"/>
-    <limit lower="-1.0" upper="1.0" effort="10.0" velocity="1.0"/>
-     -->
-  </joint>
-
-
-  <gazebo reference="laser_link">
+  <gazebo reference="lidar_link">
     <sensor type="gpu_lidar" name="generic_lidar">
-      <update_rate>10.0</update_rate> <topic>scan</topic>             <gz_frame_id>laser_link</gz_frame_id>
+      <update_rate>10.0</update_rate> 
+      <topic>scan</topic> 
+      <gz_frame_id>lidar_link</gz_frame_id>
       <lidar>
         <scan>
           <horizontal>
@@ -77,6 +77,11 @@
             <resolution>1</resolution>
             <min_angle>-3.141592</min_angle> <max_angle>3.141592</max_angle>
           </horizontal>
+          <vertical>
+            <samples>64</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.521799</min_angle> <max_angle>0.261799</max_angle>
+          </vertical>
         </scan>
         <range>
           <min>0.08</min>  <max>12.0</max>  <resolution>0.01</resolution>

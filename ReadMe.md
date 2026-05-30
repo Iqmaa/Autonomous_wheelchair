@@ -24,13 +24,13 @@ colcon build --symlink-install
 source install/setup.bash
 ```
 4. launch the project
-#### RViZ
+#### RViZ alone
 ```
 ros2 launch urdf_tutorial display.launch.py model:=$(pwd)/src/wheelchair_description/urdf/chair.xacro
 ```
 #### Gazebo Tele-op
 
-terminal 1 (to launch the chair in gaebo)
+terminal 1 (to launch the chair in gazebo)
 ```
 ros2 launch wheelchair_bringup simulated_wheelchair.launch.py
 ```

@@ -17,7 +17,7 @@ def generate_launch_description():
     # FIX 1: Point to your actual file name: 'chair.xacro' instead of 'chair.urdf.xacro'
     model_arg = DeclareLaunchArgument(
         name="model", default_value=os.path.join(
-                wheelchair_description, "urdf", "chair.xacro"
+                wheelchair_description, "urdf", "chair.xacro",
             ),
         description="Absolute path to robot urdf file"
     )
@@ -86,7 +86,8 @@ def generate_launch_description():
         executable="parameter_bridge",
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
-            "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
+            # "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
+            "/scan/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked",
         ],
     )
 

@@ -14,7 +14,6 @@ from launch_ros.parameter_descriptions import ParameterValue
 def generate_launch_description():
     wheelchair_description = get_package_share_directory("wheelchair_description")
 
-    # FIX 1: Point to your actual file name: 'chair.xacro' instead of 'chair.urdf.xacro'
     model_arg = DeclareLaunchArgument(
         name="model", default_value=os.path.join(
                 wheelchair_description, "urdf", "chair.xacro",
@@ -56,7 +55,6 @@ def generate_launch_description():
                      "use_sim_time": True}]
     )
 
-    # FIX 2: Directly call native 'empty.sdf' or 'shapes.sdf' string argument
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory("ros_gz_sim"), "launch"), "/gz_sim.launch.py"]),
@@ -74,7 +72,7 @@ def generate_launch_description():
             "-name", "wheelchair",
             "-x", "0.0",  
             "-y", "0.0",  
-            "-z", "0.5",  # Drop it closer to the ground (0.5m) so it settles quickly without bouncing
+            "-z", "0.5", 
             "-R", "0.0", 
             "-P", "0.0",
             "-Y", "0.0",

@@ -30,13 +30,9 @@ class ObstacleAvoidanceChair(Node):
         points = pc2.read_points(msg, field_names=("x", "y", "z"), skip_nans=True)
 
         for x, y, z in points:
-            # 1. FIXED SELF-DETECTION ZONE
-            # Protects a tight box around the central structural frame/seat/mast footprint
             if -0.3 < x < 0.3 and abs(y) < 0.55:
                 continue
 
-            # 2. SEPARATE DIRECTIONAL EVALUATION BALANCING
-            # Width window: 80cm (abs(y) < 0.40) | Height window: 1.2m (abs(z) < 0.60)
             if abs(y) < 0.95 and abs(z) < 0.70:
                 
                 # Check Front Zone (0.28m out to 2.5m ahead)
@@ -67,17 +63,17 @@ class ObstacleAvoidanceChair(Node):
         if self.obstacle_ahead:
             # Hazard is in front -> Back up smoothly and swing the chassis away
             self.cmd_vel.linear.x = 0.0 #-0.25 
-            self.cmd_vel.angular.z = 0.6  
-            self.get_logger().warn("⚠️ Obstacle ahead detected! Executing reverse escape...")
+            self.cmd_vel.angular.z = 0.3  
+            self.get_logger().warn("⚠️ Obstacle ahead detected! changing direction...")
             
         elif self.obstacle_behind:
             # Hazard is behind -> Move forward away from it cleanly
             self.cmd_vel.linear.x = 0.35    
-            self.cmd_vel.angular.z = 0.6    
-            self.get_logger().warn("⚠️ Obstacle behind detected! Driving forward away...")
+            self.cmd_vel.angular.z = 0.3   
+            self.get_logger().warn("⚠️ Obstacle behind detected! changing direction...")
             
         else:
-            # Path completely clear -> Cruise straight ahead normal speed
+            # Path completely clear ->  move at normal speed
             self.cmd_vel.linear.x = 0.40    
             self.cmd_vel.angular.z = 0.0    
 

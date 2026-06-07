@@ -4,7 +4,7 @@ Assembling a wheelchair and making it autonomous using a LIDAR sensor for obstac
 
 Current progress:
 
-|  RViZ  |  Gazebo   |
+|  lidar  |  lidar rays   |
 | :---: | :---: |
 | ![chair1](https://github.com/Iqmaa/Autonomous_wheelchair/blob/main/Media/week2_lidar.png?raw=true)  | ![chair2](https://github.com/Iqmaa/Autonomous_wheelchair/blob/main/Media/week2_lidar-rays.png?raw=true) |
 
